@@ -7,13 +7,13 @@ import Auth from '../auth/Auth'
 import {Video} from '../types/Video'
 
 interface VideosProps {
-  auth: Auth
+  auth: Auth,
   history: History
 }
 
 interface VideosState {
-  videos: Video[]
-  newVideoName: string
+  videos: Video[],
+  newVideoName: string,
   loadingVideos: boolean
 }
 
@@ -57,21 +57,6 @@ export class Videos extends React.PureComponent<VideosProps, VideosState> {
     }
   }
 
-  // onVideoCheck = async (pos: number) => {
-  //   try {
-  //     const video = this.state.videos[pos]
-  //     await patchVideo(this.props.auth.getIdToken(), video.videoId, {
-  //       name: video.name,
-  //     });
-  //     this.setState({
-  //       videos: update(this.state.videos, {
-  //         [pos]: { done: { $set: !video.done } }
-  //       })
-  //     })
-  //   } catch {
-  //     alert('Video check failed')
-  //   }
-  // }
 
   async componentDidMount() {
     try {
@@ -106,12 +91,12 @@ export class Videos extends React.PureComponent<VideosProps, VideosState> {
               color: 'teal',
               labelPosition: 'left',
               icon: 'add',
-              content: 'New task',
+              content: 'New video',
               onClick: this.onVideoCreate
             }}
             fluid
             actionPosition="left"
-            placeholder="To change the world..."
+            placeholder="Video 1..."
             onChange={this.handleNameChange}
           />
         </Grid.Column>
@@ -146,18 +131,9 @@ export class Videos extends React.PureComponent<VideosProps, VideosState> {
         {this.state.videos.map((video, pos) => {
           return (
             <Grid.Row key={video.videoId}>
-              {/*<Grid.Column width={1} verticalAlign="middle">*/}
-              {/*  <Checkbox*/}
-              {/*    onChange={() => this.onVideoCheck(pos)}*/}
-              {/*    checked={video.done}*/}
-              {/*  />*/}
-              {/*</Grid.Column>*/}
               <Grid.Column width={10} verticalAlign="middle">
                 {video.name}
               </Grid.Column>
-              {/*<Grid.Column width={3} floated="right">*/}
-              {/*  {video.dueDate}*/}
-              {/*</Grid.Column>*/}
               <Grid.Column width={1} floated="right">
                 <Button
                   icon
