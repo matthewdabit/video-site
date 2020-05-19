@@ -153,7 +153,7 @@ export class Videos extends React.PureComponent<VideosProps, VideosState> {
                 </Button>
               </Grid.Column>
               {video.attachmentUrl && (
-                <Embed url={video.attachmentUrl} />
+                <video src={video.attachmentUrl} controls={true} />
               )}
               <Grid.Column width={16}>
                 <Divider />
