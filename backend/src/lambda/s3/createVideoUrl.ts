@@ -12,7 +12,7 @@ export function createVideoUrl(videoId: string) {
   const uploadUrl = s3.getSignedUrl('putObject', {
     Bucket: bucketName,
     Key: videoId,
-    Expires: urlExpiration
+    Expires: parseInt(urlExpiration)
   });
 
   const s3Url = `https://${bucketName}.s3.amazonaws.com/${videoId}`;
