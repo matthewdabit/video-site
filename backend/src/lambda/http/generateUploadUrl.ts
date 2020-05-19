@@ -17,6 +17,10 @@ export const handler = middy(
 
         return {
           statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true
+          },
           body: JSON.stringify({
             uploadUrl
           })
@@ -24,6 +28,9 @@ export const handler = middy(
       } catch (error) {
         return {
           statusCode: 404,
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          },
           body: JSON.stringify({
             error: `Unable to upload video for item ${videoId}`
           })
@@ -31,8 +38,6 @@ export const handler = middy(
       }
   }
 );
-
-
 
 
 handler.use(
